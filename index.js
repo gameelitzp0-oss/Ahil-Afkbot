@@ -21,9 +21,17 @@ function createBot() {
 
     bot.loadPlugin(pathfinder);
 
-    bot.on('spawn', () => {
+        bot.on('spawn', () => {
         console.log('Bot server me aa gaya hai! 😎');
+        // Har 10 second me bot coordinates print karega
+        setInterval(() => {
+            if (bot.entity) {
+                const pos = bot.entity.position;
+                console.log(`Bot Coordinates -> X: ${pos.x.toFixed(1)}, Y: ${pos.y.toFixed(1)}, Z: ${pos.z.toFixed(1)}`);
+            }
+        }, 10000);
     });
+
 
     bot.on('chat', (username, message) => {
         if (username === bot.username) return;
